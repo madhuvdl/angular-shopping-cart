@@ -1,0 +1,50 @@
+<div class="row justify-content-center" *ngIf="deviceDetails$ | async; let deviceDetail">
+  <div class="col-lg-5 col-md-5 col-sm-12 col-12 border my-2 mx-2 m-lg-2 py-3 px-2">
+    <h1 class="text-center">{{ deviceDetail.devicename }}</h1>
+    <img src="{{ deviceDetail.deviceimage }}" class="img-fluid" alt="Image not found"/>
+  </div>
+  <div class="col-lg-5 col-md-5 col-sm-12 col-12 my-2 mx-2 m-lg-2 py-3 px-2 mat-h3">
+    <p class="text-left font-weight-bold">Key Features</p>
+    <ul>
+      <li>6.1" Liquid Retina HD Display</li>
+      <li>Dual SIM (nano-SIM and eSIM)</li>
+      <li>12 MP Rear Camera, 7 MP Selfie Camera</li>
+      <li>Fingerprint-resistant Oleophobic Coating</li>
+      <li>A12 Bionic Chip, iOS 12 OS</li>
+      <li>Splash, Water & Dust Resistant</li>
+    </ul>
+    <p class="text-left font-weight-bold">Today Price
+      <span class="font-weight-normal" *ngIf="deviceDetail.deviceofferprice > 0"><del>{{ deviceDetail.currency }}{{ deviceDetail.deviceprice }}</del></span>
+      <span class="font-weight-normal" *ngIf="deviceDetail.deviceofferprice <= 0">{{ deviceDetail.currency }}{{ deviceDetail.deviceprice }}</span>
+      <span *ngIf="deviceDetail.deviceofferprice > 0" class="font-weight-normal pl-1">{{ deviceDetail.currency }}{{ deviceDetail.deviceofferprice }}</span>
+    </p>
+    <mat-form-field>
+      <button
+        mat-button
+        mat-icon-button
+        matPrefix
+        aria-label="Remove"
+        [color]="getColor()"
+        (click)="incrementValue(-_step)"
+        [disabled]="shouldDisableDecrement(_value)">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <input matInput type="number" [(ngModel)]="_value" (focus)="setColor('primary')" (blur)="setColor('default')" readonly #qty/>
+      <button
+        mat-button
+        mat-icon-button
+        matSuffix
+        aria-label="Add"
+        [color]="getColor()"
+        (click)="incrementValue(_step)"
+        [disabled]="shouldDisableIncrement(_value)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-form-field>
+    <div class="text-left-md text-center">
+      <button mdbBtn type="button" color="indigo" mdbWavesEffect class="text-center" [disabled]="buttonDisable ? 'disabled' : ''" (click)="addToCart(deviceDetail);">Add to Cart <span class="pl-1 glyphicon glyphicon-shopping-cart"></span></button>
+    </div>
+  </div>
+</div>
+<mat-spinner mode="indeterminate" diameter="50" class="spinner-center" *ngIf="!isLoad"></mat-spinner>
+

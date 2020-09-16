@@ -1,0 +1,11 @@
+mat-form-field {
+  width: 95px;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+}
+

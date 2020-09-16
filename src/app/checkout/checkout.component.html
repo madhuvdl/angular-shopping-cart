@@ -1,0 +1,170 @@
+<div class="row d-none-" [hidden]="hidden">
+  <div class="col-lg-6 col-md-6 col-sm-12 col-12 pl-0">
+    <h1 class="text-left">Checkout</h1>
+    <div class="row border-bottom py-5" *ngFor="let cart of carts; let i = index;">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-3 font-weight-bold align-self-center">
+        <a [routerLink]="['/device-details']" [queryParams]="{skuid: cart.skuid}"><img src="{{cart.deviceimage}}" alt="Image not avilable" class="img-fluid"/></a>
+        <div class="d-flex justify-content-center"><span class="cursor-pointer" (click)="deleteItem(cart.skuid)"><i class="far fa-trash-alt pink-text"></i></span></div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-3 font-weight-bold- align-self-center">{{cart.devicename}}</div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-3 font-weight-bold- align-self-center text-right">
+        <span *ngIf="cart.deviceofferprice > 0">{{cart.qty}} x {{ cart.currency }}{{ cart.deviceofferprice }}</span>
+        <span *ngIf="cart.deviceofferprice <= 0">{{cart.qty}} x {{ cart.currency }}{{ cart.deviceprice }}</span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-3 font-weight-bold- align-self-center text-right">
+        {{cart.currency}}{{cart.price}}
+      </div>
+    </div>
+    <div class="row py-2">
+      <div class="col-lg-9 col-md-9 col-sm-9 col-9 font-weight-bold- text-right align-self-center">Total</div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-3 font-weight-bold- align-self-center text-right">{{this.currency}}{{totalprice}}</div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12 col-12 p-0">
+    <p class="text-left mat-h3 py-2 pl-md-4 pl-lg-5">Address Information</p>
+    <form class="" [formGroup]="userAddressForm" (ngSubmit)="onSubmit()">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-5 col-12 col-sm-12 py-1 px-3">
+          <mat-form-field class="" [style.width.%]=100>
+            <mat-label>First name</mat-label>
+            <input matInput placeholder="First name" value="" formControlName="firstName">
+            <mat-error *ngIf="userAddressForm.get('firstName').hasError('required')">
+              Firstname is Required!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('firstName').hasError('minlength')">
+              Firstname should be atleast 4 characters long!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('firstName').hasError('maxlength')">
+              Firstname can be atmax 20 characters long!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('firstName').hasError('pattern')">
+              Firstname must follow this pattern!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-5 col-md-5 col-12 col-sm-12 py-1 px-3">
+          <mat-form-field class="" [style.width.%]=100>
+            <mat-label>Last name</mat-label>
+            <input matInput placeholder="Last name" value="" formControlName="lastName">
+            <mat-error *ngIf="userAddressForm.get('lastName').hasError('required')">
+              Lastname is Required!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('lastName').hasError('minlength')">
+              Lastname should be atleast 4 characters long!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('lastName').hasError('maxlength')">
+              Lastname can be atmax 20 characters long!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('lastName').hasError('pattern')">
+              Lastname must follow this pattern!
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-5 col-12 col-sm-12 py-1 px-3">
+          <mat-form-field class="" [style.width.%]=100>
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Address" value="" formControlName="address">
+            <mat-error *ngIf="userAddressForm.get('address').hasError('required')">
+              Address is Required!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('address').hasError('minlength')">
+              Address should be atleast 10 characters long!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('address').hasError('maxlength')">
+              Address can be atmax 50 characters long!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('address').hasError('pattern')">
+              Address must follow this pattern!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-5 col-md-5 col-12 col-sm-12 py-1 px-3">
+          <mat-form-field class="" [style.width.%]=100>
+            <mat-label>City</mat-label>
+            <input matInput placeholder="City" value="" formControlName="city">
+            <mat-error *ngIf="userAddressForm.get('city').hasError('required')">
+              City is Required!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('city').hasError('minlength')">
+              City should be atleast 4 characters long!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('city').hasError('maxlength')">
+              City can be at max 20 characters long!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('email').hasError('pattern')">
+              City must follow this pattern!
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-5 col-12 col-sm-12 py-1 px-3">
+          <mat-form-field class="" [style.width.%]=100>
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state">
+              <mat-option *ngFor="let state of states | keyvalue" [value]="state">
+                {{state.value}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="userAddressForm.get('state').hasError('required')">
+              State is Required!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-5 col-md-5 col-12 col-sm-12 py-1 px-3">
+          <mat-form-field class="" [style.width.%]=100>
+            <mat-label>Zipcode</mat-label>
+            <input matInput placeholder="Zipcode" value="" formControlName="zipcode">
+            <mat-error *ngIf="userAddressForm.get('zipcode').hasError('required')">
+              Zipcode is Required!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('zipcode').hasError('pattern') || userAddressForm.get('zipcode').hasError('minlength') || userAddressForm.get('zipcode').hasError('maxlength')">
+              Zipcode must follow this pattern!
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-5 col-12 col-sm-12 py-1 px-3">
+          <mat-form-field class="" [style.width.%]=100>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" value="" formControlName="email">
+            <mat-error *ngIf="userAddressForm.get('email').hasError('required')">
+              Email is Required!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('email').hasError('pattern')">
+              Email must follow this pattern!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-5 col-md-5 col-12 col-sm-12 py-1 px-3">
+          <mat-form-field [style.width.%]=100>
+            <mat-label>Mobile</mat-label>
+            <input matInput type="tel" class="" formControlName="mobile">
+            <span matPrefix>+1&nbsp;</span>
+            <mat-error *ngIf="userAddressForm.get('mobile').hasError('required')">
+              Mobile is Required!
+            </mat-error>
+            <mat-error *ngIf="userAddressForm.get('mobile').hasError('pattern') || userAddressForm.get('mobile').hasError('minlength') || userAddressForm.get('mobile').hasError('maxlength')">
+              Mobile must follow this pattern!
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-12 col-sm-12 py-1 px-3 text-center">
+          <button mdbBtn type="submit" color="indigo" mdbWavesEffect class="text-center" [disabled]="buttonDisable">Checkout <span class="pl-1 glyphicon glyphicon-shopping-cart"></span></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row justify-content-center" [hidden]="!hidden">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-12 p-0">
+    <h1 class="text-center">Your cart is empty. <a [routerLink]="['/devices']">Click here</a> to shop.</h1>
+  </div>
+</div>
+

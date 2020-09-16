@@ -1,0 +1,50 @@
+[
+  {
+    "skuid": "IPHONEBLL64GB",
+    "devicename": "Apple iPhone 10 Black 64GB, 4GB RAM",
+    "deviceofferprice": "90",
+    "deviceprice": "100",
+    "currency": "$",
+    "deviceimage": "/assets/images/devices/device-1.jpeg"
+  },
+  {
+    "skuid": "IPHONEWHT64GB",
+    "devicename": "Apple iPhone 10 White 64GB, 4GB RAM",
+    "deviceofferprice": "90",
+    "deviceprice": "100",
+    "currency": "$",
+    "deviceimage": "/assets/images/devices/device-2.jpeg"
+  },
+  {
+    "skuid": "IPHONERED64GB",
+    "devicename": "Apple iPhone 10 Red 64GB, 4GB RAM",
+    "deviceofferprice": "90",
+    "deviceprice": "100",
+    "currency": "$",
+    "deviceimage": "/assets/images/devices/device-3.jpeg"
+  },
+  {
+    "skuid": "IPHONEBLL32GB",
+    "devicename": "Apple iPhone 10 Black 32GB, 3GB RAM",
+    "deviceofferprice": "",
+    "deviceprice": "80",
+    "currency": "$",
+    "deviceimage": "/assets/images/devices/device-1.jpeg"
+  },
+  {
+    "skuid": "IPHONEWHT32GB",
+    "devicename": "Apple iPhone 10 White 32GB, 3GB RAM",
+    "deviceofferprice": "",
+    "deviceprice": "80",
+    "currency": "$",
+    "deviceimage": "/assets/images/devices/device-2.jpeg"
+  },
+  {
+    "skuid": "IPHONERED32GB",
+    "devicename": "Apple iPhone 10 Red 32GB, 3GB RAM",
+    "deviceofferprice": "",
+    "deviceprice": "80",
+    "currency": "$",
+    "deviceimage": "/assets/images/devices/device-3.jpeg"
+  }
+]
